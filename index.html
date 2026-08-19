@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Green ZONE | WhatsApp Community</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #07130d;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 92%;
+            max-width: 1150px;
+            margin: auto;
+        }
+
+        /* HERO */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            background:
+                radial-gradient(circle at 50% 20%, rgba(36, 220, 104, 0.16), transparent 35%),
+                linear-gradient(135deg, #07130d, #0a1d13 55%, #05100a);
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            width: 420px;
+            height: 420px;
+            border-radius: 50%;
+            background: rgba(31, 220, 100, 0.08);
+            filter: blur(70px);
+            top: -150px;
+            left: -100px;
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 850px;
+            margin: auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 10px 18px;
+            border: 1px solid rgba(45, 230, 108, 0.4);
+            background: rgba(45, 230, 108, 0.08);
+            color: #45ed7b;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 22px;
+        }
+
+        .hero h1 {
+            font-size: 64px;
+            line-height: 1.05;
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+
+        .hero h1 span {
+            color: #35e76d;
+        }
+
+        .hero p {
+            color: #b9c9c0;
+            font-size: 19px;
+            line-height: 1.7;
+            max-width: 720px;
+            margin: auto;
+        }
+
+        .markets {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin: 30px 0;
+        }
+
+        .market {
+            padding: 10px 17px;
+            border-radius: 8px;
+            background: #10251a;
+            border: 1px solid #1c4229;
+            color: #d8f9e1;
+            font-size: 14px;
+        }
+
+        .join-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 17px 34px;
+            background: #25d366;
+            color: #06140b;
+            text-decoration: none;
+            border-radius: 10px;
+            font-size: 17px;
+            font-weight: 800;
+            box-shadow: 0 12px 35px rgba(37, 211, 102, 0.25);
+            transition: 0.3s ease;
+        }
+
+        .join-btn:hover {
+            transform: translateY(-4px);
+            background: #42ef7d;
+            box-shadow: 0 18px 45px rgba(37, 211, 102, 0.35);
+        }
+
+        .note {
+            color: #81958a;
+            font-size: 12px;
+            margin-top: 14px;
+        }
+
+        /* FEATURES */
+        .features-section {
+            padding: 90px 0;
+            background: #091810;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title .small-title {
+            color: #35e76d;
+            text-transform: uppercase;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+        }
+
+        .section-title h2 {
+            font-size: 40px;
+            margin-bottom: 12px;
+        }
+
+        .section-title p {
+            color: #91a69a;
+            max-width: 650px;
+            margin: auto;
+            line-height: 1.6;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .feature-card {
+            background: #0d2116;
+            border: 1px solid #183b25;
+            padding: 30px 25px;
+            border-radius: 16px;
+            transition: 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-7px);
+            border-color: #2bdd67;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+        }
+
+        .icon {
+            width: 55px;
+            height: 55px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(53, 231, 109, 0.1);
+            border: 1px solid rgba(53, 231, 109, 0.2);
+            border-radius: 13px;
+            font-size: 26px;
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .feature-card p {
+            color: #91a69a;
+            line-height: 1.6;
+            font-size: 14px;
+        }
+
+        /* CTA */
+        .cta-section {
+            padding: 90px 0;
+            background: #07130d;
+        }
+
+        .cta-box {
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+            padding: 65px 25px;
+            border-radius: 25px;
+            border: 1px solid #1d4d2c;
+            background:
+                radial-gradient(circle at center, rgba(37, 211, 102, 0.13), transparent 60%),
+                #0c1e13;
+        }
+
+        .cta-box h2 {
+            font-size: 42px;
+            margin-bottom: 15px;
+        }
+
+        .cta-box p {
+            color: #a5b8ac;
+            max-width: 650px;
+            margin: 0 auto 28px;
+            line-height: 1.7;
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 25px 15px;
+            background: #050d08;
+            color: #6f8377;
+            font-size: 13px;
+        }
+
+        /* FLOATING WHATSAPP */
+        .whatsapp-float {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            width: 58px;
+            height: 58px;
+            background: #25d366;
+            color: #06140b;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 27px;
+            z-index: 99;
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.35);
+        }
+
+        /* MOBILE */
+        @media (max-width: 900px) {
+            .hero h1 {
+                font-size: 50px;
+            }
+
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .hero {
+                min-height:0px;
+                padding: 70px 0;
+            }
+
+            .hero h1 {
+                font-size: 40px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .markets {
+                gap: 8px;
+            }
+
+            .market {
+                font-size: 12px;
+                padding: 9px 12px;
+            }
+
+            .join-btn {
+                width: 100%;
+                padding: 16px 20px;
+            }
+
+            .features-section,
+            .cta-section {
+                padding: 65px 0;
+            }
+
+            .section-title h2 {
+                font-size: 30px;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .feature-card {
+                padding: 25px 22px;
+            }
+
+            .cta-box {
+                padding: 45px 20px;
+            }
+
+            .cta-box h2 {
+                font-size: 31px;
+            }
+
+            .whatsapp-float {
+                width: 52px;
+                height: 52px;
+                right: 15px;
+                bottom: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+
+                <div class="badge">
+                    ● GREEN ZONE COMMUNITY
+                </div>
+
+                <h1>
+                    Enter the <span>Green ZONE</span>
+                </h1>
+
+                <p>
+                    Join our WhatsApp Community for market education,
+                    insights, live sessions, mentorship and guided learning
+                    across Forex, Crypto & Commodities.
+                </p>
+
+                <div class="markets">
+                    <div class="market">📈 FOrex</div>
+                    <div class="market">₿ C@yptO</div>
+                    <div class="market">💹 Commodities</div>
+                </div>
+
+                <a href="https://chat.whatsapp.com/BEj4aX1U6Hh0EGpUhU47zi" target="_blank" class="join-btn">
+                    💬 Join WhatsApp Community
+                </a>
+
+                <div class="note">
+                    Educational community • Learn • Connect • Grow
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- FEATURES -->
+    <section class="features-section">
+
+        <div class="container">
+
+            <div class="section-title">
+                <div class="small-title">What You Get</div>
+                <h2>Everything You Need in One Community</h2>
+                <p>
+                    Get access to valuable learning resources, sessions
+                    and community support in one place.
+                </p>
+            </div>
+
+            <div class="features-grid">
+
+                <div class="feature-card">
+                    <div class="icon">📊</div>
+                    <h3>Signals</h3>
+                    <p>
+                        Receive market-related signals and educational
+                        insights designed to support your learning journey.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="icon">🎥</div>
+                    <h3>Live Sessions</h3>
+                    <p>
+                        Join live market sessions and learn through
+                        practical discussions and market observations.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="icon">🎯</div>
+                    <h3>Mentorship</h3>
+                    <p>
+                        Learn with structured guidance and mentorship
+                        focused on improving your market knowledge.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="icon">💬</div>
+                    <h3>24/7 Support</h3>
+                    <p>
+                        Stay connected with the community and get support
+                        whenever you need guidance.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="icon">👨‍🏫</div>
+                    <h3>One-on-One Guidance</h3>
+                    <p>
+                        Get personalized mentorship and guided learning
+                        to better understand your goals and strategy.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="icon">👥</div>
+                    <h3>Community Access</h3>
+                    <p>
+                        Connect with like-minded members, participate in
+                        discussions and stay updated with the community.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CTA -->
+    <section class="cta-section">
+
+        <div class="container">
+
+            <div class="cta-box">
+
+                <h2>Ready to Enter the Green ZONE?</h2>
+
+                <p>
+                    Join our WhatsApp Community and get access to
+                    educational resources, live sessions, mentorship
+                    and community support.
+                </p>
+
+                <a href="https://chat.whatsapp.com/BEj4aX1U6Hh0EGpUhU47zi" target="_blank" class="join-btn">
+                    💬 Join WhatsApp Community
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer>
+        © 2026 Green ZONE. All Rights Reserved.
+    </footer>
+
+
+   
+</body>
+</html>
